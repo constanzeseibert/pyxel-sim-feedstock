@@ -1,5 +1,5 @@
 {% set name = "pyxel-sim" %}
-{% set version = "1.10.2" %}
+{% set version = "1.12" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyxel_sim-{{ version }}.tar.gz
-  sha256: 97e9a7ad4098a93577613313eb9bf666c5ccf08d166f64759a0825465902162a
+  sha256: 53a56f8eb86419e73cfcc322d6f3ce82c2f1bdef752021c82f87ef648bfe1347
 
 build:
   noarch: python
@@ -17,9 +17,7 @@ build:
 requirements:
   host:
     - python >=3.9
-    - setuptools >=63
-    - versioneer ==0.28
-    - wheel
+    - versioneer
     - pip
   run:
     - python >=3.9
@@ -32,9 +30,9 @@ requirements:
     - sep
     - matplotlib-base >=3.1
     - seaborn
-    - holoviews >=1.15.0
+    - hvplot
     - bokeh
-    - dask
+    - dask-core
     - distributed
     - ipywidgets >=7.5
     - astropy >=4.3
@@ -53,12 +51,15 @@ requirements:
     - pympler
     - pillow
     - scikit-image
+    - astroquery
+    - specutils
+    - synphot
     - asdf # Added manually
     - pygmo  >=2.16.1      # Added manually
 
 test:
   imports:
-    - pyxel
+    - pyxel_sim
     - pyxel.calibration
   commands:
     - pip check
@@ -77,4 +78,3 @@ extra:
   recipe-maintainers:
     - flemmel
     - constanzeseibert
-    
